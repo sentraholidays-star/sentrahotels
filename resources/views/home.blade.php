@@ -66,6 +66,42 @@
       @endif
       <!-- End Preferred Hotels Section -->
 
+      <!-- Start Exclusive Rates Section -->
+      @if(isset($exclusiveRates) && $exclusiveRates->count() > 0 && ($global_settings->is_exclusive_rates_active ?? true))
+        <section class="py-16 bg-slate-100" id="exclusive-rates" aria-labelledby="exclusive-rates-title">
+          <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-10">
+              <h2 id="exclusive-rates-title" class="text-3xl md:text-5xl font-serif text-slate-900">Exclusive Rates</h2>
+              <p class="text-slate-600 text-lg mt-3">Penawaran harga terbaik khusus untuk Anda.</p>
+            </div>
+
+            <div class="swiper exclusiveRatesSwiper !pb-12">
+              <div class="swiper-wrapper">
+                @foreach($exclusiveRates as $rate)
+                  <div class="swiper-slide !w-[85%] md:!w-[350px]">
+                    <a href="{{ $rate->url_link ?? '#' }}" class="block bg-white rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-all duration-300 overflow-hidden group border border-slate-100">
+                      <!-- Bagian Gambar -->
+                      <div class="w-full aspect-square relative overflow-hidden bg-slate-200">
+                        @php
+                            $imgUrl = $rate->image ? $rate->image->url : 'https://images.unsplash.com/photo-1551882547-ff40c0d5b9af?auto=format&fit=crop&w=600&q=80';
+                        @endphp
+                        <img src="{{ $imgUrl }}" alt="{{ $rate->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                      </div>
+                      <!-- Bagian Teks (Background Putih) -->
+                      <div class="p-6 bg-white text-center flex flex-col justify-center items-center h-28 relative z-10 border-t border-slate-100">
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors duration-300 line-clamp-2 leading-tight">{{ $rate->title }}</h3>
+                      </div>
+                    </a>
+                  </div>
+                @endforeach
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </section>
+      @endif
+      <!-- End Exclusive Rates Section -->
+
       @if($global_settings->is_destination_active)
       <section class="py-20 bg-slate-50" id="collection" aria-labelledby="collection-title">
         <div class="max-w-7xl mx-auto px-4">

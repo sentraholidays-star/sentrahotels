@@ -11,6 +11,11 @@ Route::get('/destination', [DestinationController::class, 'index'])->name('desti
 
 Route::get('/destination/{slug}', [SiteController::class, 'destination'])->name('destination.show');
 Route::get('/hotel/{slug}', [SiteController::class, 'hotel'])->name('hotel.show');
+Route::get('/article/{slug}', [SiteController::class, 'article'])->name('article');
+Route::get('/exclusive-rates', [SiteController::class, 'exclusiveRates'])->name('exclusive-rates');
+Route::get('/hotelbrands', [SiteController::class, 'hotelBrands'])->name('hotel-brands');
+Route::get('/recommended-hotels', [SiteController::class, 'recommendedHotels'])->name('recommended-hotels');
+Route::get('/best-hotels', [SiteController::class, 'bestHotels'])->name('best-hotels');
 
 // Rute Pemesanan Hotel (Sidebar Form)
 use App\Http\Controllers\BookingController;

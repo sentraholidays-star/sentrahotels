@@ -198,6 +198,43 @@
       @yield('content')
     </main>
 
+    <!-- FOOTER NOTICE (VERTICAL TICKER) -->
+    @if(isset($global_notices) && $global_notices->count() > 0)
+    <div class="w-full bg-slate-900 border-t border-slate-800 font-sans h-10 overflow-hidden flex items-start justify-center">
+        <div id="notice-ticker" class="w-full max-w-7xl mx-auto px-4 flex flex-col transition-transform duration-500 ease-in-out" style="transform: translateY(0);">
+            @foreach($global_notices as $notice)
+            <div class="h-10 flex items-center justify-center w-full shrink-0">
+                <p class="text-white text-xs md:text-sm text-center truncate">
+                    <i class="{{ $notice->icon }} text-amber-400 mr-2"></i> {!! $notice->message !!}
+                </p>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ticker = document.getElementById('notice-ticker');
+            const itemCount = {{ $global_notices->count() }};
+            if (!ticker || itemCount <= 1) return; // Tidak perlu rotasi jika hanya 1
+            
+            let currentIndex = 0;
+            
+            setInterval(() => {
+                // Kalkulasi tinggi dinamis agar tidak meleset
+                const itemElement = ticker.firstElementChild;
+                const itemHeight = itemElement ? itemElement.offsetHeight : 40;
+                
+                currentIndex++;
+                if (currentIndex >= itemCount) {
+                    currentIndex = 0;
+                }
+                ticker.style.transform = `translateY(-${currentIndex * itemHeight}px)`;
+            }, 3000); // Rotasi setiap 3 detik
+        });
+    </script>
+    @endif
+
     <!-- FOOTER (Kloning Sentra Holidays Footer) -->
     <footer style="background-color: #1e3a8a;" class="text-white py-10 mt-auto border-t-4 border-blue-500">
         <div class="max-w-6xl mx-auto px-4">
@@ -318,7 +355,7 @@
     </footer>
 
     <!-- WIDGET WHATSAPP MULTI-OPSI (KLONING SENTRA HOLIDAYS) -->
-    <div style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 2147483647 !important; display: block !important;" class="font-sans">
+    <div style="position: fixed !important; bottom: 70px !important; right: 24px !important; z-index: 2147483647 !important; display: block !important;" class="font-sans">
         
         <!-- Panel Pilihan -->
         <div id="wa-panel" class="hidden absolute bottom-20 right-0 w-72 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden transition-all duration-300 transform origin-bottom-right">

@@ -65,6 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- INITIALIZE SWIPER EXCLUSIVE RATES CAROUSEL ---
+  if (document.querySelector('.exclusiveRatesSwiper')) {
+    const exclusiveRatesSwiper = new Swiper('.exclusiveRatesSwiper', {
+      loop: true,
+      speed: 800,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      slidesPerView: 'auto',
+      spaceBetween: 16,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: { spaceBetween: 24 }
+      }
+    });
+  }
+
   // --- HOTEL IMAGES SLIDER ---
   const sliderWrapper = document.getElementById('hotelSliderWrapper');
   const prevBtn = document.getElementById('sliderPrev');

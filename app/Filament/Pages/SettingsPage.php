@@ -124,6 +124,9 @@ class SettingsPage extends Page implements HasForms
                                 Toggle::make('is_news_active')
                                     ->label('Tampilkan Section News')
                                     ->default(true),
+                                Toggle::make('is_exclusive_rates_active')
+                                    ->label('Tampilkan Section Exclusive Rates')
+                                    ->default(true),
                             ]),
                         Tabs\Tab::make('Teks Beranda')
                             ->schema([
@@ -155,6 +158,37 @@ class SettingsPage extends Page implements HasForms
                                     ->image()
                                     ->disk('public')
                                     ->directory('settings/seo'),
+                            ]),
+                        Tabs\Tab::make('Halaman Exclusive Rates')
+                            ->schema([
+                                TextInput::make('hotel_promo_title')
+                                    ->label('Judul Hero Banner')
+                                    ->placeholder('Contoh: Exclusive Inventory & Best Price Guarantee'),
+                                TextInput::make('hotel_promo_subtitle')
+                                    ->label('Subjudul Hero Banner')
+                                    ->placeholder('Contoh: Penawaran spesial khusus untuk Anda'),
+                                \Awcodes\Curator\Components\Forms\CuratorPicker::make('hotel_promo_banners')
+                                    ->label('Banner Exclusive Rates (Slider)')
+                                    ->multiple()
+                                    ->columnSpanFull()
+                                    ->helperText('Gambar-gambar ini akan menjadi slider hero di halaman Khusus Exclusive Rates.'),
+                                \Awcodes\Curator\Components\Forms\CuratorPicker::make('hotel_brand_promo_banners')
+                                    ->label('Banner Hotel Brands Promo (Slider)')
+                                    ->multiple()
+                                    ->columnSpanFull()
+                                    ->helperText('Gambar-gambar ini akan menjadi slider hero di halaman Khusus Hotel Brands Promo.'),
+                                    
+                                \Awcodes\Curator\Components\Forms\CuratorPicker::make('recommended_hotel_banners')
+                                    ->label('Banner Recommended Hotels (Slider)')
+                                    ->multiple()
+                                    ->columnSpanFull()
+                                    ->helperText('Gambar-gambar ini akan menjadi slider hero di halaman Khusus Recommended Hotels.'),
+
+                                \Awcodes\Curator\Components\Forms\CuratorPicker::make('best_hotel_banners')
+                                    ->label('Banner Best Hotels (Slider)')
+                                    ->multiple()
+                                    ->columnSpanFull()
+                                    ->helperText('Gambar-gambar ini akan menjadi slider hero di halaman Khusus Best Hotels.'),
                             ]),
                     ])
                     ->columnSpanFull(),
