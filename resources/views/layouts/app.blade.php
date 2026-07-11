@@ -41,6 +41,16 @@
 
     </style>
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNX07466NK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FNX07466NK');
+    </script>
+    
     @yield('styles')
   </head>
   <!-- Beralih dari bg-gray-50 ke bg-slate-50 (Estetika Sentra Holidays) -->
