@@ -68,7 +68,7 @@
 
       <!-- Start Exclusive Rates Section -->
       @if(isset($exclusiveRates) && $exclusiveRates->count() > 0 && ($global_settings->is_exclusive_rates_active ?? true))
-        <section class="py-16 bg-slate-100" id="exclusive-rates" aria-labelledby="exclusive-rates-title">
+        <section class="py-16 bg-white" id="exclusive-rates" aria-labelledby="exclusive-rates-title">
           <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-10">
               <h2 id="exclusive-rates-title" class="text-3xl md:text-5xl font-serif text-slate-900">Exclusive Rates</h2>
