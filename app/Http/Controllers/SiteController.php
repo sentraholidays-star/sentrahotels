@@ -262,6 +262,8 @@ class SiteController extends Controller
             $images = \Awcodes\Curator\Models\Media::whereIn('id', $term->images)->get();
         }
 
-        return view('terms-and-conditions', compact('term', 'images'));
+        $seo_page = \App\Models\StaticPageSeo::where('page_identifier', 'terms')->first();
+
+        return view('terms-and-conditions', compact('term', 'images', 'seo_page'));
     }
 }

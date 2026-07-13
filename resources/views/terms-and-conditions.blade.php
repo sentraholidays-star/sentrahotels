@@ -1,5 +1,15 @@
 @extends('layouts.app')
-@section('title', $term->title)
+
+@if(isset($seo_page) && $seo_page)
+    @section('meta_title', $seo_page->meta_title ?: $term->title)
+    @section('meta_description', $seo_page->meta_description)
+    @section('meta_keywords', $seo_page->meta_keywords ? implode(', ', $seo_page->meta_keywords) : '')
+    @if($seo_page->og_image)
+        @section('og_image', asset('storage/' . $seo_page->og_image))
+    @endif
+@else
+    @section('meta_title', $term->title)
+@endif
 
 @section('content')
 <!-- Spacing for fixed navbar -->

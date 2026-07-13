@@ -23,7 +23,7 @@ class StaticPageSeoResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false; // Jangan izinkan buat data baru sembarangan
+        return true; 
     }
 
     public static function form(Form $form): Form
@@ -34,12 +34,15 @@ class StaticPageSeoResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('page_name')
                             ->label('Nama Halaman')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation): bool => $operation === 'edit')
+                            ->required()
+                            ->dehydrated(true),
                         Forms\Components\TextInput::make('page_identifier')
-                            ->label('Identifier Sistem')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->label('Identifier Sistem (contoh: terms)')
+                            ->disabled(fn (string $operation): bool => $operation === 'edit')
+                            ->required()
+                            ->unique(ignoreRecord: true)
+                            ->dehydrated(true),
                         Forms\Components\TextInput::make('meta_title')
                             ->label('Meta Title')
                             ->maxLength(60),
