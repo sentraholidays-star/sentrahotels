@@ -38,16 +38,14 @@ class HowWeWorkResource extends Resource
                     ]),
                 Forms\Components\Section::make('Konten Judul (Title)')
                     ->schema([
-                        \FilamentTiptapEditor\TiptapEditor::make('title_content')
+                        \AmidEsfahani\FilamentTinyEditor\TinyEditor::make('title_content')
                             ->label('Teks Judul')
-                            ->profile('default')
                             ->columnSpanFull(),
                     ]),
                 Forms\Components\Section::make('Konten Paragraf')
                     ->schema([
-                        \FilamentTiptapEditor\TiptapEditor::make('description')
+                        \AmidEsfahani\FilamentTinyEditor\TinyEditor::make('description')
                             ->label('Isi Konten')
-                            ->profile('default')
                             ->columnSpanFull(),
                     ]),
                 Forms\Components\Section::make('FAQ Accordion')
@@ -59,9 +57,8 @@ class HowWeWorkResource extends Resource
                                     ->label('Pertanyaan')
                                     ->required()
                                     ->maxLength(255),
-                                \FilamentTiptapEditor\TiptapEditor::make('answer')
+                                \AmidEsfahani\FilamentTinyEditor\TinyEditor::make('answer')
                                     ->label('Jawaban')
-                                    ->profile('default')
                                     ->required(),
                             ])
                             ->collapsible()

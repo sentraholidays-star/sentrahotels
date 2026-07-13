@@ -8,7 +8,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
-use FilamentTiptapEditor\TiptapEditor;
+use AmidEsfahani\FilamentTinyEditor\TinyEditor;
 use Filament\Forms\Components\TagsInput;
 
 class CompanyProfileForm
@@ -36,10 +36,9 @@ class CompanyProfileForm
                             ->label('Judul Profil')
                             ->required(),
                         
-                        TiptapEditor::make('content')
+                        TinyEditor::make('content')
                             ->label('Sejarah & Deskripsi Perusahaan')
                             ->required()
-                            ->profile('default')
                             ->columnSpanFull(),
                     ]),
                 

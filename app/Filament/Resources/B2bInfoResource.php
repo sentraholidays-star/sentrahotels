@@ -33,9 +33,8 @@ class B2bInfoResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->columnSpanFull(),
-                \FilamentTiptapEditor\TiptapEditor::make('description')
+                \AmidEsfahani\FilamentTinyEditor\TinyEditor::make('description')
                     ->label('Deskripsi Layanan')
-                    ->profile('default')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('images')
                     ->label('Unggah Gambar (Maks 5)')
@@ -60,9 +59,8 @@ class B2bInfoResource extends Resource
                             ->placeholder('Contoh: Join Our Network')
                             ->maxLength(255)
                             ->columnSpanFull(),
-                        \FilamentTiptapEditor\TiptapEditor::make('join_us_description')
+                        \AmidEsfahani\FilamentTinyEditor\TinyEditor::make('join_us_description')
                             ->label('Isi Konten (Paragraf)')
-                            ->profile('default')
                             ->columnSpanFull(),
                         Forms\Components\Repeater::make('join_us_requirements')
                             ->label('Persyaratan Sub Agen (FAQ Accordion)')
@@ -71,9 +69,8 @@ class B2bInfoResource extends Resource
                                     ->label('Judul Syarat / Pertanyaan')
                                     ->required()
                                     ->maxLength(255),
-                                \FilamentTiptapEditor\TiptapEditor::make('answer')
+                                \AmidEsfahani\FilamentTinyEditor\TinyEditor::make('answer')
                                     ->label('Penjelasan / Jawaban')
-                                    ->profile('default')
                                     ->required(),
                             ])
                             ->collapsible()
