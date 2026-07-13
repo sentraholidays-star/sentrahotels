@@ -24,6 +24,9 @@ class TermAndConditionResource extends Resource
     
     protected static ?string $navigationLabel = 'Terms & Conditions';
     protected static ?string $modelLabel = 'Terms & Conditions';
+    
+    protected static ?string $navigationGroup = 'Tampilan Depan';
+    protected static ?int $navigationSort = 10;
 
     public static function form(Form $form): Form
     {
