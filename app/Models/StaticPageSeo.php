@@ -14,4 +14,8 @@ class StaticPageSeo extends Model
         'meta_keywords',
         'og_image',
     ];
+
+    protected $casts = [
+        'meta_keywords' => 'array',
+    ];
 }
