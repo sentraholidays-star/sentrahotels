@@ -16,6 +16,7 @@ Route::get('/exclusive-rates', [SiteController::class, 'exclusiveRates'])->name(
 Route::get('/hotelbrands', [SiteController::class, 'hotelBrands'])->name('hotel-brands');
 Route::get('/recommended-hotels', [SiteController::class, 'recommendedHotels'])->name('recommended-hotels');
 Route::get('/best-hotels', [SiteController::class, 'bestHotels'])->name('best-hotels');
+Route::get('/terms-and-conditions', [SiteController::class, 'termsAndConditions'])->name('terms-and-conditions');
 
 // Rute Pemesanan Hotel (Sidebar Form)
 use App\Http\Controllers\BookingController;

@@ -247,4 +247,21 @@ class SiteController extends Controller
 
         return view('best-hotels', compact('settings', 'hotels', 'countries', 'cities'));
     }
+
+    public function termsAndConditions()
+    {
+        $term = \App\Models\TermAndCondition::first();
+        
+        // If not found, create a dummy or handle 404. For now, abort 404 if no terms exist.
+        if (!$term) {
+            abort(404, 'Terms and Conditions not found.');
+        }
+
+        $images = [];
+        if (!empty($term->images)) {
+            $images = \Awcodes\Curator\Models\Media::whereIn('id', $term->images)->get();
+        }
+
+        return view('terms-and-conditions', compact('term', 'images'));
+    }
 }
