@@ -8,7 +8,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
-use FilamentTiptapEditor\TiptapEditor;
+use AmidEsfahani\FilamentTinyEditor\TinyEditor;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\TagsInput;
 use Illuminate\Support\Str;
@@ -44,11 +44,9 @@ class ArticleForm
                 
                 Section::make('Konten Artikel')
                     ->schema([
-                        TiptapEditor::make('content')
+                        TinyEditor::make('content')
                             ->label('Konten Artikel')
                             ->required()
-                            ->profile('default')
-                            ->extraInputAttributes(['style' => 'min-height: 500px;'])
                             ->columnSpanFull(),
                     ]),
                 
