@@ -60,7 +60,7 @@ Tone of voice: $tone.
             throw new Exception("GEMINI_API_KEY belum dikonfigurasi di file .env");
         }
 
-        $geminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}";
+        $geminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={$apiKey}";
         
         $response = Http::timeout(45)->post($geminiUrl, [
             'contents' => [
