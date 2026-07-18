@@ -11,11 +11,13 @@
 @endif
 
 @if(isset($seo_page) && $seo_page->meta_keywords)
-    @section('meta_keywords', $seo_page->meta_keywords)
+    @section('meta_keywords', is_array($seo_page->meta_keywords) ? implode(', ', $seo_page->meta_keywords) : $seo_page->meta_keywords)
 @endif
 
 @if(isset($seo_page) && $seo_page->og_image)
     @section('og_image', asset('storage/' . $seo_page->og_image))
+@elseif(isset($b2bInfo) && is_array($b2bInfo->images) && count($b2bInfo->images) > 0)
+    @section('og_image', asset('storage/' . $b2bInfo->images[0]))
 @endif
 
 @section('content')

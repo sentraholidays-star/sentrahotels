@@ -10,6 +10,16 @@
     @section('meta_description', $seo_page->meta_description)
 @endif
 
+@if(isset($seo_page) && $seo_page->meta_keywords)
+    @section('meta_keywords', is_array($seo_page->meta_keywords) ? implode(', ', $seo_page->meta_keywords) : $seo_page->meta_keywords)
+@endif
+
+@if(isset($seo_page) && $seo_page->og_image)
+    @section('og_image', asset('storage/' . $seo_page->og_image))
+@elseif(isset($b2bInfo) && $b2bInfo->join_us_hero_image)
+    @section('og_image', asset('storage/' . $b2bInfo->join_us_hero_image))
+@endif
+
 @section('content')
 <main class="min-h-screen bg-slate-50 pb-24">
     

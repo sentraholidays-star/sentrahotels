@@ -3,6 +3,18 @@
 @section('title', 'Exclusive Rates - Sentra Hotels')
 @section('meta_description', 'Temukan penawaran eksklusif terbaik dari Sentra Hotels.')
 
+@php
+    $banners = $settings->hotel_promo_banners ?? [];
+    $hasBanners = is_array($banners) && count($banners) > 0;
+    if ($hasBanners) {
+        $firstMedia = \Awcodes\Curator\Models\Media::find($banners[0]);
+    }
+@endphp
+
+@if($hasBanners && isset($firstMedia) && $firstMedia)
+    @section('og_image', $firstMedia->url)
+@endif
+
 @section('content')
 
 <!-- HERO BANNER SECTION -->

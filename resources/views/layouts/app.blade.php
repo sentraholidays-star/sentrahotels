@@ -14,7 +14,13 @@
     <meta property="og:url" content="{{ request()->url() }}">
     <meta property="og:title" content="@yield('meta_title', $global_settings->seo_meta_title ?? 'Sentra Hotels | Luxury Hotels 4 & 5 Star')">
     <meta property="og:description" content="@yield('meta_description', $global_settings->seo_meta_description ?? 'Sentra Hotels membantu tamu B2B dan B2C mendapatkan hotel bintang 4 dan 5 secara offline dengan kurasi, negosiasi, dan layanan personal.')">
-    <meta property="og:image" content="@yield('og_image', (isset($global_settings) && $global_settings->seo_og_image) ? asset('storage/' . $global_settings->seo_og_image) : asset('assets/images/default-og.jpg'))">
+    @hasSection('og_image')
+        <meta property="og:image" content="@yield('og_image')">
+    @elseif(isset($global_settings) && $global_settings->seo_og_image)
+        <meta property="og:image" content="{{ asset('storage/' . $global_settings->seo_og_image) }}">
+    @elseif(isset($global_settings) && $global_settings->logo_image)
+        <meta property="og:image" content="{{ asset('storage/' . $global_settings->logo_image) }}">
+    @endif
 
     @if(isset($global_settings) && $global_settings->favicon_image)
       <link rel="icon" href="{{ asset('storage/' . $global_settings->favicon_image) }}">
